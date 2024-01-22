@@ -11,6 +11,7 @@ export const theme = Object.freeze({
     green: '#008000',
     darkOrange: '#ff8c00',
     darkBlue: '#020B4A',
+    darkGreen: '#336600',
     tagBackground: ['linear-gradient(to bottom, #FFD194, #D1913C)'],
   },
 
@@ -25,5 +26,9 @@ export const theme = Object.freeze({
     innerTwo: 'inset 0 0 10px  rgba(0, 0, 0, 0.5)',
     innerTr: 'inset 0 7px 10px  rgba(0, 0, 0, 0.5)',
     hover: '0 0 10px rgba(0, 0, 0, 0.7)',
+    // innerAnDouter: ' inset 0 0 10px 5px rgba(0, 0, 0, 0.3),
+    // 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    // 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    // 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12)',
   },
 });

@@ -1,22 +1,22 @@
 import styled from 'styled-components';
 
-export const SearchbarStyle = styled.header`
-  top: 0;
-  left: 0;
-  position: sticky;
-  z-index: 1100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 64px;
-  padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  color: #fff;
-  background-color: #3f51b5;
-  box-shadow: ${({ theme }) => theme.shadows.button};
-`;
+// export const SearchbarStyle = styled.header`
+//   top: 0;
+//   left: 0;
+//   position: sticky;
+//   z-index: 1100;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 64px;
+//   padding-right: 24px;
+//   padding-left: 24px;
+//   padding-top: 12px;
+//   padding-bottom: 12px;
+//   color: #fff;
+//   background-color: #3f51b5;
+//   box-shadow: ${({ theme }) => theme.shadows.button};
+// `;
 
 export const SearchForm = styled.form`
   display: flex;
@@ -27,7 +27,7 @@ export const SearchForm = styled.form`
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: ${({ theme }) => theme.shadows.button};
+  box-shadow: 5px 5px 15px rgba(34, 139, 34, 0.5);
 `;
 
 export const Button = styled.button`
@@ -55,7 +55,15 @@ export const SpanLabel = styled.span`
   align-items: center;
 `;
 
-export const Img = styled.img``;
+export const Img = styled.img`
+  &:hover {
+    /* & > svg path {
+      fill: green;
+      stroke: green;
+      background-color: green;
+    } */
+  }
+`;
 
 export const Input = styled.input`
   display: inline-block;
@@ -64,15 +72,16 @@ export const Input = styled.input`
   font: inherit;
   font-size: 28px;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkGreen};
   border: none;
   outline: none;
-  padding-left: 4px;
+  padding-left: 15px;
   padding-right: 4px;
 
   &::placeholder {
     font: inherit;
     font-size: 18px;
     font-weight: 400;
+    padding: 15px;
   }
 `;

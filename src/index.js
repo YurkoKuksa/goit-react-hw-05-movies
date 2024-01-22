@@ -10,13 +10,16 @@ import { theme } from 'styles/theme';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ThemeProvider theme={theme}>
-    <App />
-    <ToastContainer autoClose={1000} />
-    <GlobalStyle />
-  </ThemeProvider>
+  <BrowserRouter basename="/goit-react-hw-05-movies">
+    <ThemeProvider theme={theme}>
+      <App />
+      <ToastContainer autoClose={1000} />
+      <GlobalStyle />
+    </ThemeProvider>
+  </BrowserRouter>
 );
 
 // ReactDOM.createRoot(document.getElementById('root')).render(
