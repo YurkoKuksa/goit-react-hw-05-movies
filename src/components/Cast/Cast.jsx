@@ -1,35 +1,44 @@
-import { Title } from 'pages/Home.styled';
-import { Character, Photo } from './Cast.styled';
+import {
+  Box,
+  Character,
+  LiItems,
+  Photo,
+  Title,
+  UlWrapper,
+} from './Cast.styled';
 import { useEffect, useState } from 'react';
 
 import { getMovieCast } from 'api/apiMovies';
+import { useParams } from 'react-router-dom';
 
 export const Cast = () => {
   const [cast, setCast] = useState(null);
 
-  // const { movieId } = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieCast(cast).then(castData => {
-      console.log(castData);
-      setCast(castData);
+    getMovieCast(movieId).then(castData => {
+      setCast(castData.cast);
     });
-  }, [cast]);
+  }, [movieId]);
 
   return (
-    <div>
-      jhdfjhjshfjshfhsdkfs
-      <ul>
-        {cast.map(item => (
-          <li key={item.id}>
-            <Photo scr="{#}" alt="{#}" />
-            <Title>name_jkjhjkhjjh</Title>
-            <Character>
-              Character: <span>jhjhkjhkjhkj</span>
-            </Character>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Box>
+      <UlWrapper>
+        {cast?.length > 0 &&
+          cast.map(item => (
+            <LiItems key={item.id}>
+              <Photo
+                src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
+                alt={`Photo of ${item.original_name}`}
+              />
+              <Title>{item.original_name}</Title>
+              <Character>
+                Character: <span>{item.character}</span>
+              </Character>
+            </LiItems>
+          ))}
+      </UlWrapper>
+    </Box>
   );
 };

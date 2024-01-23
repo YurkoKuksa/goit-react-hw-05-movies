@@ -2,7 +2,12 @@ import styled from 'styled-components';
 
 export const Btn = styled.button`
   /* padding: 0; */
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  &:hover {
+    color: darkgreen;
+    font-weight: 700;
+  }
 `;
 
 export const Poster = styled.img`
@@ -56,4 +61,8 @@ export const More = styled.h3`
 
 export const Pp = styled.p`
   margin-bottom: 5px;
+  &:hover {
+    font-weight: 700;
+    color: darkgreen;
+  }
 `;

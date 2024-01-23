@@ -22,6 +22,7 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     getMovieDetails(movieId).then(movieData => {
+      console.log(movieData);
       setMovies(movieData);
     });
   }, [movieId]);
@@ -31,9 +32,8 @@ export const MovieDetails = () => {
   return (
     <>
       <Link>
-        <Btn type="button">go back</Btn>
+        <Btn type="button">&larr;go back</Btn>
       </Link>
-
       {movies && (
         <Box>
           <Poster
@@ -59,15 +59,15 @@ export const MovieDetails = () => {
       <BoxReview>
         <More>Additional information</More>
         <nav>
-          <Link to="/cast">
-            <Pp>CAst</Pp>
+          <Link to="cast">
+            <Pp>Cast</Pp>
           </Link>
-          <Link to="/review">
+          <Link to="reviews">
             <Pp>Reviwe</Pp>
           </Link>
         </nav>
-        <Outlet />
       </BoxReview>
+      <Outlet />
     </>
   );
 };

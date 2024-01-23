@@ -1,6 +1,6 @@
 import { getMovie } from 'api/apiMovies';
 import { useEffect, useState } from 'react';
-import { Container, Lii, Title } from './Home.styled';
+import { Container, Lii, ListItems, Title } from './Home.styled';
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
@@ -22,7 +22,7 @@ export const Home = () => {
         {movies.map(item => (
           <Lii key={item.id}>
             <Link to={`/movies/${item.id}`}>
-              <p>{item.original_title}</p>
+              <ListItems>{item.original_title}</ListItems>
             </Link>
           </Lii>
         ))}

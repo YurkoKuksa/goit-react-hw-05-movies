@@ -15,3 +15,10 @@ export const Lii = styled.li`
   margin-bottom: 5px;
   font-weight: 600;
 `;
+
+export const ListItems = styled.p`
+  &:hover {
+    font-weight: 700;
+    color: darkgreen;
+  }
+`;
