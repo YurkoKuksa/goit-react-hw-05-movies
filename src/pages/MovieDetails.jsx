@@ -3,9 +3,13 @@ import {
   Box,
   BoxReview,
   Btn,
+  GenreBox,
   MainTitle,
+  More,
   P,
   Poster,
+  Pp,
+  Span,
 } from './MovieDetails.styled';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'api/apiMovies';
@@ -18,7 +22,6 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     getMovieDetails(movieId).then(movieData => {
-      console.log(movieData);
       setMovies(movieData);
     });
   }, [movieId]);
@@ -28,7 +31,7 @@ export const MovieDetails = () => {
   return (
     <>
       <Link>
-        <Btn type="button">go home</Btn>
+        <Btn type="button">go back</Btn>
       </Link>
 
       {movies && (
@@ -40,24 +43,30 @@ export const MovieDetails = () => {
           <div>
             <MainTitle>{movies.original_title}</MainTitle>
             <P>
-              User Score: <span>{movies.vote_average}</span>
+              User Score: <Span>{movies.vote_average.toFixed(1)}%</Span>
             </P>
             <Title>Overview:</Title>
             <P>{movies.overview}</P>
             <Title>Genres:</Title>
-            <P>{movies.genre_ids} </P>
+            <GenreBox>
+              {movies.genres.map(item => (
+                <P key={item.id}>{item.name}</P>
+              ))}
+            </GenreBox>
           </div>
         </Box>
       )}
       <BoxReview>
-        <h3>Additional information</h3>
+        <More>Additional information</More>
+        <nav>
+          <Link to="/cast">
+            <Pp>CAst</Pp>
+          </Link>
+          <Link to="/review">
+            <Pp>Reviwe</Pp>
+          </Link>
+        </nav>
         <Outlet />
-        <Link>
-          <p>CAst</p>
-        </Link>
-        <Link>
-          <p>Reviwe</p>
-        </Link>
       </BoxReview>
     </>
   );
