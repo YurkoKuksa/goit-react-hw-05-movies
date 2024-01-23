@@ -17,3 +17,14 @@ export const getMovie = async () => {
     throw error;
   }
 };
+
+export const getMovieDetails = async id => {
+  try {
+    const { data } = await instance.get(`/movie/${id}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching API:', error);
+    throw error;
+  }
+};

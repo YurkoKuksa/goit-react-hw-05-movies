@@ -1,9 +1,32 @@
 import { getMovie } from 'api/apiMovies';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Container, Lii, Title } from './Home.styled';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
+  const [movies, setMovies] = useState([]);
+
   useEffect(() => {
-    getMovie().then(console.log);
+    getMovie().then(movieData => {
+      console.log(movieData);
+      setMovies(movieData);
+    });
   }, []);
-  return <>Home</>;
+
+  // id, media_type, original_title, overview
+
+  return (
+    <Container>
+      <Title>Trending Today</Title>
+      <ul>
+        {movies.map(item => (
+          <Lii key={item.id}>
+            <Link to={`/movies/${item.id}`}>
+              <p>{item.original_title}</p>
+            </Link>
+          </Lii>
+        ))}
+      </ul>
+    </Container>
+  );
 };
