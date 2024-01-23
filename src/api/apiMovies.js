@@ -21,7 +21,8 @@ export const getMovie = async () => {
 export const getSearch = async () => {
   try {
     const { data } = await instance.get('/search/movie');
-    return data.results;
+    console.log(data);
+    return data;
   } catch (error) {
     console.error('Error fetching API:', error);
     throw error;
@@ -42,7 +43,7 @@ export const getMovieDetails = async id => {
 export const getMovieCast = async id => {
   try {
     const { data } = await instance.get(`/movie/${id}/credits`);
-    console.log(data);
+
     return data;
   } catch (error) {
     console.error('Error fetching API:', error);
@@ -53,7 +54,7 @@ export const getMovieCast = async id => {
 export const getMovieReview = async id => {
   try {
     const { data } = await instance.get(`/movie/${id}/reviews`);
-    console.log(data);
+
     return data;
   } catch (error) {
     console.error('Error fetching API:', error);

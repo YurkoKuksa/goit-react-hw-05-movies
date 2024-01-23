@@ -22,7 +22,6 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     getMovieDetails(movieId).then(movieData => {
-      console.log(movieData);
       setMovies(movieData);
     });
   }, [movieId]);

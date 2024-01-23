@@ -1,15 +1,27 @@
+import { useEffect, useState } from 'react';
 import { Button, Img, Input, SearchForm, SpanLabel } from './Movies.styled';
 import Logo from 'img/find.svg';
+import { getSearch } from 'api/apiMovies';
+import { Lii, ListItems } from './Home.styled';
+import { Link } from 'react-router-dom';
 
 export const Movies = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    getSearch().then(movieData => {
+      console.log(movieData);
+      setMovies(movieData);
+    });
+  }, []);
+
   return (
     <>
-      <SearchForm /* onSubmit={handleSubmit} */ autoFocus>
+      <SearchForm autoFocus>
         <Input
           type="text"
           autoComplete="off"
           placeholder="Search movie"
-          // onChange={handleChange}
           required
         />
         <Button type="submit">
@@ -18,6 +30,15 @@ export const Movies = () => {
           </SpanLabel>
         </Button>
       </SearchForm>
+
+      {movies.length > 0 &&
+        movies.map(item => (
+          <Lii key={item.id}>
+            <Link to={`/movies/${item.id}`}>
+              <ListItems></ListItems>
+            </Link>
+          </Lii>
+        ))}
     </>
   );
 };

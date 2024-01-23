@@ -9,7 +9,7 @@ export const Review = styled.p`
 `;
 
 export const NoReview = styled.p`
-  margin-top: 25px;
+  margin-top: 50px;
   color: darkgreen;
   font-weight: 700;
 `;

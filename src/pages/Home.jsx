@@ -8,24 +8,22 @@ export const Home = () => {
 
   useEffect(() => {
     getMovie().then(movieData => {
-      console.log(movieData);
       setMovies(movieData);
     });
   }, []);
-
-  // id, media_type, original_title, overview
 
   return (
     <Container>
       <Title>Trending Today</Title>
       <ul>
-        {movies.map(item => (
-          <Lii key={item.id}>
-            <Link to={`/movies/${item.id}`}>
-              <ListItems>{item.original_title}</ListItems>
-            </Link>
-          </Lii>
-        ))}
+        {movies.length > 0 &&
+          movies.map(item => (
+            <Lii key={item.id}>
+              <Link to={`/movies/${item.id}`}>
+                <ListItems>{item.original_title}</ListItems>
+              </Link>
+            </Lii>
+          ))}
       </ul>
     </Container>
   );
