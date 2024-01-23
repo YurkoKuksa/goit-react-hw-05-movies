@@ -1,23 +1,20 @@
 import { getMovieReview } from 'api/apiMovies';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState(null);
 
-  const { movieId } = useParams();
-
   useEffect(() => {
-    getMovieReview(movieId).then(reviewData => {
+    getMovieReview().then(reviewData => {
       console.log(reviewData);
       setReviews(reviewData);
     });
-  }, [movieId]);
+  }, []);
 
   return (
     <div>
       <ul>
-        {}
+        {reviews.map()}
         <li>
           <h2>
             dffff : <span></span>

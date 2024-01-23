@@ -1,7 +1,7 @@
 import { Title } from 'pages/Home.styled';
 import { Character, Photo } from './Cast.styled';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+
 import { getMovieCast } from 'api/apiMovies';
 
 export const Cast = () => {
