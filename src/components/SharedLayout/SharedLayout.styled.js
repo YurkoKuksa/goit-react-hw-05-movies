@@ -34,6 +34,8 @@ export const Logo = styled.p`
   margin: 0;
 `;
 
+export const Navigator = styled.nav``;
+
 export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
@@ -41,6 +43,10 @@ export const Link = styled(NavLink)`
   color: black;
   font-weight: 500;
   margin-left: 25px;
+
+  &:hover {
+    /* font-weight: 700; */
+  }
 
   &.active {
     color: white;

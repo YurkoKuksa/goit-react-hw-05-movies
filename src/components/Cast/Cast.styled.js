@@ -5,9 +5,10 @@ export const Box = styled.div`
 `;
 
 export const UlWrapper = styled.ul`
-  /* display: flex;
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  padding: 0; */
+  padding: 0;
 `;
 
 export const LiItems = styled.li`
