@@ -1,27 +1,11 @@
 import styled from 'styled-components';
 
-// export const SearchbarStyle = styled.header`
-//   top: 0;
-//   left: 0;
-//   position: sticky;
-//   z-index: 1100;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   min-height: 64px;
-//   padding-right: 24px;
-//   padding-left: 24px;
-//   padding-top: 12px;
-//   padding-bottom: 12px;
-//   color: #fff;
-//   background-color: #3f51b5;
-//   box-shadow: ${({ theme }) => theme.shadows.button};
-// `;
-
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   width: 100%;
+
+  margin-bottom: 35px;
 
   max-width: 600px;
   background-color: #fff;
@@ -35,7 +19,7 @@ export const Button = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  /* background-image: ; */
+
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;

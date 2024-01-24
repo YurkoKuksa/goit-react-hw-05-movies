@@ -6,13 +6,17 @@ import { getSearch } from 'api/apiMovies';
 import { useSearchParams } from 'react-router-dom';
 import { MoviesList } from 'components/MovieList/MovieList';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const name = searchParams.get('name');
 
   useEffect(() => {
+    if (!name) {
+      return;
+    }
+
     getSearch(name).then(data => {
       setMovies(data.results);
     });
@@ -45,3 +49,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

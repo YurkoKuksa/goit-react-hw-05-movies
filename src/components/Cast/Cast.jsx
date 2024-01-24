@@ -2,6 +2,7 @@ import {
   Box,
   Character,
   LiItems,
+  NoCast,
   Photo,
   Title,
   UlWrapper,
@@ -11,7 +12,7 @@ import { useEffect, useState } from 'react';
 import { getMovieCast } from 'api/apiMovies';
 import { useParams } from 'react-router-dom';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState(null);
 
   const { movieId } = useParams();
@@ -24,9 +25,9 @@ export const Cast = () => {
 
   return (
     <Box>
-      <UlWrapper>
-        {cast?.length > 0 &&
-          cast.map(item => (
+      {cast?.length > 0 ? (
+        <UlWrapper>
+          {cast.map(item => (
             <LiItems key={item.id}>
               <Photo
                 src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
@@ -38,7 +39,12 @@ export const Cast = () => {
               </Character>
             </LiItems>
           ))}
-      </UlWrapper>
+        </UlWrapper>
+      ) : (
+        <NoCast>There are no casts for this movie</NoCast>
+      )}
     </Box>
   );
 };
+
+export default Cast;

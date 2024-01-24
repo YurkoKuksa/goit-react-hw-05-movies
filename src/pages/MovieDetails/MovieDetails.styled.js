@@ -1,8 +1,7 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Btn = styled.button`
-  /* padding: 0; */
-  margin-bottom: 10px;
+export const StyledLink = styled(Link)`
   font-size: 20px;
   &:hover {
     color: darkgreen;
@@ -10,13 +9,14 @@ export const Btn = styled.button`
   }
 `;
 
-export const Poster = styled.img`
-  width: 250px;
-`;
-
 export const Box = styled.div`
   display: flex;
   gap: 15px;
+  margin-top: 10px;
+`;
+
+export const Poster = styled.img`
+  width: 250px;
 `;
 
 export const MainTitle = styled.h1`

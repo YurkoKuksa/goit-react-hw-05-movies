@@ -6,17 +6,17 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #d7f7ca;
+  height: 100vh;
 `;
 
 export const MainTitle = styled.h1`
-  font-size: 70px;
+  font-size: 120px;
   font-weight: 700;
   color: darkgreen;
   text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.5);
   margin-bottom: 30px;
-  & {
-    -webkit-text-stroke: 1px #3a543a;
-  }
+  -webkit-text-stroke: 1px #3a543a;
 `;
 
 export const TextInfo = styled.p`
@@ -26,9 +26,12 @@ export const TextInfo = styled.p`
 
 export const BackLink = styled(Link)`
   font-size: 35px;
+  padding: 15px;
+  border: 1px solid darkgreen;
+  border-radius: 15px;
+  background-color: #39ba07;
 
   &:hover {
     font-weight: 700;
-    color: darkgreen;
   }
 `;

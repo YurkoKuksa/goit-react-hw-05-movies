@@ -1,5 +1,4 @@
-import { MainTitle } from '../MovieDetails/MovieDetails.styled';
-import { BackLink, TextInfo, Wrapper } from './NotFound.styled';
+import { BackLink, TextInfo, Wrapper, MainTitle } from './NotFound.styled';
 
 const NotFound = () => {
   return (

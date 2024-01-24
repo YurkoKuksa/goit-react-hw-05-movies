@@ -30,3 +30,9 @@ export const Title = styled.h2`
 export const Character = styled.p`
   margin-bottom: 30px;
 `;
+
+export const NoCast = styled.p`
+  margin-top: 50px;
+  color: darkgreen;
+  font-weight: 700;
+`;

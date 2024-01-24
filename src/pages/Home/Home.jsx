@@ -4,7 +4,7 @@ import { Container, Title } from './Home.styled';
 
 import { MoviesList } from 'components/MovieList/MovieList';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -20,3 +20,5 @@ export const Home = () => {
     </Container>
   );
 };
+
+export default Home;

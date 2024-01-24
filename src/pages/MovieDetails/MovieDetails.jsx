@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import {
   Box,
   BoxReview,
-  Btn,
   GenreBox,
   MainTitle,
   More,
@@ -10,29 +9,26 @@ import {
   Poster,
   Pp,
   Span,
+  StyledLink,
 } from './MovieDetails.styled';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'api/apiMovies';
 import { Title } from '../Home/Home.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movies, setMovies] = useState(null);
-
   const { movieId } = useParams();
 
+  const location = useLocation();
   useEffect(() => {
     getMovieDetails(movieId).then(movieData => {
       setMovies(movieData);
     });
   }, [movieId]);
 
-  // id, media_type, original_title, overview, backdrop_path
-
   return (
     <>
-      <Link>
-        <Btn type="button">&larr;go back</Btn>
-      </Link>
+      <StyledLink to={location.state?.from || '/'}>&larr;go back</StyledLink>
       {movies && (
         <Box>
           <Poster
@@ -70,3 +66,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;
