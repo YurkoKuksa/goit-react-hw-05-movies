@@ -20,7 +20,7 @@ const MovieDetails = () => {
   const [movies, setMovies] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const defaultPic =
-    'https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-24.jpg';
+    'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie-768x1129.jpg';
 
   const { movieId } = useParams();
 
