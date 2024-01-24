@@ -16,7 +16,7 @@ export const LiItems = styled.li`
 
 export const Photo = styled.img`
   width: 140px;
-  height: auto;
+  height: 210px;
   margin-bottom: 10px;
 `;
 
