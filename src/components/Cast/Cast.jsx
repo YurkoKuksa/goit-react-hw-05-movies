@@ -16,6 +16,8 @@ import Loader from 'components/Loader/Loader';
 const Cast = () => {
   const [cast, setCast] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const defaultPic =
+    'https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-24.jpg';
 
   const { movieId } = useParams();
 
@@ -37,7 +39,11 @@ const Cast = () => {
           {cast.map(item => (
             <LiItems key={item.id}>
               <Photo
-                src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
+                src={
+                  item.profile_path
+                    ? `https://image.tmdb.org/t/p/w500/${item.profile_path}`
+                    : defaultPic
+                }
                 alt={`Photo of ${item.original_name}`}
               />
               <Title>{item.original_name}</Title>
