@@ -11,16 +11,23 @@ import { useEffect, useState } from 'react';
 
 import { getMovieCast } from 'api/apiMovies';
 import { useParams } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
 
 const Cast = () => {
   const [cast, setCast] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieCast(movieId).then(castData => {
-      setCast(castData.cast);
-    });
+    setIsLoading(true);
+    getMovieCast(movieId)
+      .then(castData => {
+        setCast(castData.cast);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [movieId]);
 
   return (
@@ -43,6 +50,7 @@ const Cast = () => {
       ) : (
         <NoCast>There are no casts for this movie</NoCast>
       )}
+      {isLoading && <Loader />}
     </Box>
   );
 };

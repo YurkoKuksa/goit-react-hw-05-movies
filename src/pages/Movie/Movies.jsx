@@ -5,10 +5,12 @@ import { getSearch } from 'api/apiMovies';
 
 import { useSearchParams } from 'react-router-dom';
 import { MoviesList } from 'components/MovieList/MovieList';
+import Loader from 'components/Loader/Loader';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
 
   const name = searchParams.get('name');
 
@@ -17,9 +19,15 @@ const Movies = () => {
       return;
     }
 
-    getSearch(name).then(data => {
-      setMovies(data.results);
-    });
+    setIsLoading(true);
+
+    getSearch(name)
+      .then(data => {
+        setMovies(data.results);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [name]);
 
   const handleSubmit = event => {
@@ -45,7 +53,9 @@ const Movies = () => {
         </Button>
       </SearchForm>
 
-      <MoviesList movies={movies} />
+      {movies.length > 0 && <MoviesList movies={movies} />}
+
+      {isLoading && <Loader />}
     </>
   );
 };

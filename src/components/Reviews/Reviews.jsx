@@ -2,16 +2,23 @@ import { getMovieReview } from 'api/apiMovies';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Author, NoReview, Review } from './Reviews.styled';
+import Loader from 'components/Loader/Loader';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieReview(movieId).then(reviewData => {
-      setReviews(reviewData.results);
-    });
+    setIsLoading(true);
+    getMovieReview(movieId)
+      .then(reviewData => {
+        setReviews(reviewData.results);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [movieId]);
 
   return (
@@ -31,6 +38,7 @@ const Reviews = () => {
       ) : (
         <NoReview>There are no reviews for this movie</NoReview>
       )}
+      {isLoading && <Loader />}
     </div>
   );
 };

@@ -14,16 +14,27 @@ import {
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'api/apiMovies';
 import { Title } from '../Home/Home.styled';
+import Loader from 'components/Loader/Loader';
 
 const MovieDetails = () => {
   const [movies, setMovies] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const defaultPic =
+    'https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-24.jpg';
+
   const { movieId } = useParams();
 
   const location = useLocation();
+
   useEffect(() => {
-    getMovieDetails(movieId).then(movieData => {
-      setMovies(movieData);
-    });
+    setIsLoading(true);
+    getMovieDetails(movieId)
+      .then(movieData => {
+        setMovies(movieData);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [movieId]);
 
   return (
@@ -32,7 +43,11 @@ const MovieDetails = () => {
       {movies && (
         <Box>
           <Poster
-            src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
+            src={
+              movies.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movies.poster_path}`
+                : defaultPic
+            }
             alt={movies.original_title}
           />
           <div>
@@ -63,6 +78,7 @@ const MovieDetails = () => {
         </nav>
       </BoxReview>
       <Outlet />
+      {isLoading && <Loader />}
     </>
   );
 };

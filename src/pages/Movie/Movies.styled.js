@@ -44,8 +44,7 @@ export const Img = styled.img`
     /* & > svg path {
       fill: green;
       stroke: green;
-      background-color: green;
-    } */
+      */
   }
 `;
 
