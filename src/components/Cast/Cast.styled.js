@@ -8,14 +8,10 @@ export const UlWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 0;
 `;
 
 export const LiItems = styled.li`
   flex-basis: calc((100% - 80px) / 5);
-
-  /* padding: 8px;
-  box-sizing: border-box; */
 `;
 
 export const Photo = styled.img`

@@ -13,7 +13,7 @@ import {
 } from './MovieDetails.styled';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'api/apiMovies';
-import { Title } from './Home.styled';
+import { Title } from '../Home/Home.styled';
 
 export const MovieDetails = () => {
   const [movies, setMovies] = useState(null);

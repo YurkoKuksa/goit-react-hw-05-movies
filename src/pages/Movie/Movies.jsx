@@ -2,27 +2,37 @@ import { useEffect, useState } from 'react';
 import { Button, Img, Input, SearchForm, SpanLabel } from './Movies.styled';
 import Logo from 'img/find.svg';
 import { getSearch } from 'api/apiMovies';
-import { Lii, ListItems } from './Home.styled';
-import { Link } from 'react-router-dom';
+
+import { useSearchParams } from 'react-router-dom';
+import { MoviesList } from 'components/MovieList/MovieList';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const name = searchParams.get('name');
 
   useEffect(() => {
-    getSearch().then(movieData => {
-      console.log(movieData);
-      setMovies(movieData);
+    getSearch(name).then(data => {
+      setMovies(data.results);
     });
-  }, []);
+  }, [name]);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    setSearchParams({ name: event.target.elements.query.value });
+    setMovies([]);
+  };
 
   return (
     <>
-      <SearchForm autoFocus>
+      <SearchForm autoFocus onSubmit={handleSubmit}>
         <Input
           type="text"
           autoComplete="off"
           placeholder="Search movie"
           required
+          name="query"
         />
         <Button type="submit">
           <SpanLabel>
@@ -31,14 +41,7 @@ export const Movies = () => {
         </Button>
       </SearchForm>
 
-      {movies.length > 0 &&
-        movies.map(item => (
-          <Lii key={item.id}>
-            <Link to={`/movies/${item.id}`}>
-              <ListItems></ListItems>
-            </Link>
-          </Lii>
-        ))}
+      <MoviesList movies={movies} />
     </>
   );
 };

@@ -18,9 +18,9 @@ export const getMovie = async () => {
   }
 };
 
-export const getSearch = async () => {
+export const getSearch = async query => {
   try {
-    const { data } = await instance.get('/search/movie');
+    const { data } = await instance.get(`/search/movie?query=${query}`);
     console.log(data);
     return data;
   } catch (error) {
